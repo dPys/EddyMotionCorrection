@@ -98,6 +98,24 @@ class TrivialB0Model:
         return self._S0
 
 
+class AverageDWModel:
+    """A trivial model that returns an average map."""
+
+    __slots__ = ("_data",)
+
+    def __init__(self, gtab, **kwargs):
+        """Implement object initialization."""
+        return  # do nothing at initialization time
+
+    def fit(self, data, **kwargs):
+        """Calculate the average."""
+        self._data = data.mean(-1)
+
+    def predict(self, gradient, **kwargs):
+        """Return the average map."""
+        return self._data
+
+
 class DTIModel:
     """A wrapper of :obj:`dipy.reconst.dti.TensorModel."""
 
